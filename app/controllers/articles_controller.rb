@@ -5,6 +5,12 @@ class ArticlesController < ApplicationController
   def index
     @articles = if params[:query].present?
                   Article.where('lower(name) Like ?', "#{params[:query].downcase}%")
+                  # save the search results into db if found
+                  Search.create(
+                    query: params[:query],
+                    results_count: Article.where('lower(name) Like ?', "#{params[:query].downcase}%").count,
+                    ip_address: request.remote_ip
+                  )
                 else
                   Article.all
                 end
