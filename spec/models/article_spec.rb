@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Article, type: :model do
-   describe 'When testing Article model' do
+  describe 'When testing Article model' do
     before(:each) do
       @article = FactoryBot.build(:article)
     end
@@ -20,13 +20,13 @@ RSpec.describe Article, type: :model do
     end
 
     context 'When testing edge cases with the method' do
-      it "name should not exceed maximum length" do
-        @article.name = "a" * (Article::MAX_LENGTH + 1)
+      it 'name should not exceed maximum length' do
+        @article.name = 'a' * (Article::MAX_LENGTH + 1)
         expect(@article).to_not be_valid
       end
 
-      it "name should not be less tham minimum length" do
-        @article.name = "a" * (Article::MIN_LENGTH - 1)
+      it 'name should not be less tham minimum length' do
+        @article.name = 'a' * (Article::MIN_LENGTH - 1)
         expect(@article).to_not be_valid
       end
     end
