@@ -20,6 +20,5 @@ module RailsRealTimeSearch
     # config.eager_load_paths << Rails.root.join("extras")
 
     # add sidekiq
-    config.active_job.queue_adapter = :sidekiq
   end
 end

@@ -20,6 +20,26 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_185152) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "entities", force: :cascade do |t|
+    t.string "name", null: false
+    t.decimal "amount", null: false
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_entities_on_group_id"
+    t.index ["user_id"], name: "index_entities_on_user_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "icon", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_groups_on_user_id"
+  end
+
   create_table "searches", force: :cascade do |t|
     t.string "ip_address"
     t.string "query"
@@ -30,4 +50,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_185152) do
     t.index ["query", "created_at"], name: "index_searches_on_query"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "name", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "entities", "groups"
+  add_foreign_key "entities", "users"
+  add_foreign_key "groups", "users"
 end

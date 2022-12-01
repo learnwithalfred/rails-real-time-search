@@ -10,18 +10,11 @@ class ArticlesController < ApplicationController
         "%#{params[:query].downcase}%"
       )
       # save the search results using background task
-
-      LogSearchJob.set(
-        wait: 5.seconds
-      ).perform_later(
-        params[:query],
-        Article.where(
-          'lower(name) Like ?',
-          "%#{params[:query].downcase}%"
-        ).count,
-        request.remote_ip
-      )
-
+      Search.create!(query: params[:query],
+                     results_count: Article.where(
+                       'lower(name) Like ?',
+                       "%#{params[:query].downcase}%"
+                     ).count, ip_address: request.remote_ip)
     else
       @articles = Article.all
     end

@@ -9,7 +9,7 @@ gem 'jbuilder'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 7.0.4'
-gem 'sidekiq', '~> 6.5'
+# gem 'sidekiq', '~> 6.5'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
@@ -24,8 +24,8 @@ group :development, :test do
 end
 
 group :development do
-  gem 'spring'
-  gem 'web-console'
+  # gem 'spring'
+  # gem 'web-console'
 end
 
 group :test do
