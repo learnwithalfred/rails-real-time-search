@@ -78,3 +78,5 @@ end
 gem 'factory_bot_rails'
 
 gem 'faker'
+
+gem "sidekiq", "~> 6.5"
