@@ -10,7 +10,16 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="body">
+  <body class="">
+    <div class="navbar">
+      <div>
+        <%= link_to "Rails Real TimeSearch", root_path, class:"navbar-item" %>
+      </div>
+      <div>
+        <%= link_to "Search Results", searches_index_path, class:"navbar-item" %>
+  
+      </div>
+    </div>
     <div class="center-div">
       <%= yield %>
     </div>

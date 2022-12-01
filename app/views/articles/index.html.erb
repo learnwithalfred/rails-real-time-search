@@ -5,11 +5,22 @@
       <%= link_to "New article", new_article_path, class:"submit-btn" %>
     </div>
   </div>
-  <%= form_with(url: articles_path, method: "GET", data:{controller: "form-submission", turbo_frame: "articles", turbo_action: "advance"}) do |form| %>
+  <%= form_with(url: articles_path, method: "GET") do |form| %>
   <div class="form">
     <%= form.label :query, "Search articles by name:", class:"label" %>
-    <%= form.text_field :query, data: { action: "input->form-submission#search" }, class:"input" %>
+    <%= form.text_field :query, class:"input", placeholder:"search articles..." %>
+    <%= form.submit "Search", class:"submit-btn" %>
   </div>
   <% end %>
-  <%= render "articles", articles: @articles %>
-</div>
+  <div id="articles">
+    <% if @articles.empty? %>
+    <p>No articles found</p>
+    <% else %>
+
+    <% @articles.each do |article| %>
+    <p class="item">
+      <%= article.name %> <%= link_to "View", article_path(article) %>
+    </p>
+    <%end %>
+    <% end %>
+  </div>
