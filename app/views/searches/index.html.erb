@@ -1,0 +1,19 @@
+<div>
+  <h1>Latest Searches</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Top Searches</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @searches.map do |k, v| %>
+      <tr>
+        <td><%= k %></td>
+        <td><%= v %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
