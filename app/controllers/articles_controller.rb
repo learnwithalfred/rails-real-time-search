@@ -5,7 +5,10 @@ class ArticlesController < ApplicationController
   def index
     if params[:query].present?
 
-      @articles = Article.where('lower(name) Like ?', "%#{params[:query].downcase}%")
+      @articles = Article.where(
+        'lower(name) Like ?',
+        "%#{params[:query].downcase}%"
+      )
       # save the search results using background task
 
       LogSearchJob.set(
