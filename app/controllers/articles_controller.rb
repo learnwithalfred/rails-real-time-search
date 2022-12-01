@@ -4,13 +4,15 @@ class ArticlesController < ApplicationController
   # GET /articles or /articles.json
   def index
     @articles = if params[:query].present?
-                  Article.where('lower(name) Like ?', "#{params[:query].downcase}%")
-                  # save the search results into db if found
-                  Search.create(
-                    query: params[:query],
-                    results_count: Article.where('lower(name) Like ?', "#{params[:query].downcase}%").count,
-                    ip_address: request.remote_ip
-                  )
+                  Article.where('lower(name) Like ?', "%#{params[:query].downcase}%")
+                  # save the search results using background task
+
+                  LogSearchJob.set(wait: 3.seconds).perform_later(params[:query],
+                                                                  Article.where(
+                                                                    'lower(name) Like ?', "%#{params[:query].downcase}%"
+                                                                  ).count,
+                                                                  request.remote_ip)
+
                 else
                   Article.all
                 end
