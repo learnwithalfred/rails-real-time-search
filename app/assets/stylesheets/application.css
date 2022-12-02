@@ -13,3 +13,89 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+ }
+
+ .submit-btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+ }
+
+ .submit-btn:hover {
+    background-color: #45a049;
+ }
+
+.center-div {
+    margin: 0 auto;
+    width: 30%;
+    padding: 10px;
+    border: 1px solid rgb(193, 189, 189);
+}
+
+.header-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.label {
+  color: rgb(7, 7, 7);
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.input {
+  height: 30px;
+  font-size: 16px;
+  padding: 5px;
+}
+
+.flex {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+ .red-btn {
+    background-color: #f41414;
+ }
+ .default-btn {
+    background-color: #9b9a9a;
+ }
+
+ .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    margin: 1rem 0;
+ }
+
+ .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    margin: 1rem 0;
+    width: 80%;
+ }

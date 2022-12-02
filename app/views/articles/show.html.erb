@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @article %>
+
+<div class="flex">
+  <%= link_to "Edit", edit_article_path(@article), class:"submit-btn" %> 
+
+  <%= button_to "Destroy", @article, method: :delete, class:"submit-btn red-btn" %>
+
+    <%= link_to "Go Back", articles_path , class:"submit-btn default-btn"%>
+
+</div>
