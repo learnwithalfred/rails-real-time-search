@@ -23,10 +23,10 @@ group :development, :test do
   gem 'rspec-rails', '~> 6.0.0.rc1'
 end
 
-group :development do
-  gem 'spring'
-  gem 'web-console'
-end
+# group :development do
+#   gem 'spring'
+#   gem 'web-console'
+# end
 
 group :test do
   gem 'capybara'
