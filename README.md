@@ -96,7 +96,6 @@ Clone this repository to your desired folder:
 ```sh
   git clone https://github.com/learnwithalfred/rails-real-time-search
 ```
--
 
 ### Install
 
